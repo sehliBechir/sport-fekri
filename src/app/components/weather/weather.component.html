@@ -1,0 +1,55 @@
+<app-banner1 title="weather"></app-banner1>
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <form [formGroup]="weatherForm">
+          <!-- validators -->
+          <div class="form-group">
+            <input type="text" formControlName="city" class="form-control" placeholder="CITY">
+          </div>
+          <!-- validators -->
+          <div *ngIf="weatherForm.controls['city'].invalid && (
+            weatherForm.controls['city'].touched ||
+            weatherForm.controls['city'].dirty)">
+            <div *ngIf="weatherForm.controls['city'].errors.required" style="color:red">
+              city is required
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" [disabled]="weatherForm.invalid" (click)="searchWeather()" class="btn btn-primary py-3 px-5" value="search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+
+  <div class="widget-body mb-3">
+    <div class="widget-vs">
+      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+        <div class="team-1 text-center">
+          <img src="assets/images/logo_1.png" alt="Image">
+          <h3>Football League</h3>
+        </div>
+    
+   
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center widget-vs-contents mb-4">
+  <h4>{{weatherResult?.temperature}}</h4>
+  <p class="mb-5">
+    <span class="d-block">{{weatherResult?.pressure}}</span>
+    <span class="d-block">{{weatherResult?.humidity}}</span>
+    <strong class="text-primary">{{weatherResult?.sunrise * 1000 | date:"hh:mm"}}</strong>
+  </p>
+
+  <div id="date-countdown2" class="pb-1"></div>
+</div>
+
